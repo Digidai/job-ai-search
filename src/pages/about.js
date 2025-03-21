@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
-import { UserGroupIcon, LightBulbIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon, LightBulbIcon, RocketLaunchIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Footer from '../components/Footer';
+import { useState } from 'react';
 
 export default function About() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-400/5 via-green-400/10 to-teal-400/15">
       {/* Navigation */}
@@ -12,6 +15,7 @@ export default function About() {
             <div className="flex-shrink-0">
               <a href="/" className="text-2xl font-bold text-gradient">OpenJobs AI</a>
             </div>
+            {/* Desktop Navigation */}
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
               <a href="/#how-it-works" className="nav-link">How It Works</a>
               <a href="/about" className="nav-link-active">About</a>
@@ -19,12 +23,57 @@ export default function About() {
                 Get Started
               </button>
             </div>
+            {/* Mobile Menu Button */}
+            <div className="sm:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all duration-200"
+              >
+                <span className="sr-only">Open menu</span>
+                {isMobileMenuOpen ? (
+                  <XMarkIcon className="h-6 w-6" />
+                ) : (
+                  <Bars3Icon className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="sm:hidden absolute top-16 inset-x-0 z-50 bg-white border-b border-neutral-200">
+            <div className="pt-2 pb-4 px-4 space-y-1">
+              <a
+                href="/#how-it-works"
+                className="block px-3 py-2 rounded-lg text-base font-medium text-neutral-900 hover:bg-neutral-100 hover:text-emerald-600 transition-all duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                How It Works
+              </a>
+              <a
+                href="/about"
+                className="block px-3 py-2 rounded-lg text-base font-medium bg-neutral-100 text-emerald-600 transition-all duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <div className="mt-4 px-3">
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg px-4 py-2 text-base font-medium hover:opacity-90 transition-all duration-200 flex items-center justify-center space-x-2"
+                >
+                  <span>Get Started</span>
+                  <RocketLaunchIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* About Hero Section */}
-      <div className="relative overflow-hidden min-h-[80vh] flex items-center">
+      <div className="relative overflow-hidden min-h-screen sm:min-h-[80vh] flex items-start sm:items-center pt-24 sm:pt-0">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-radial from-neutral-100 via-transparent to-transparent opacity-80"></div>
@@ -132,7 +181,7 @@ export default function About() {
 
               {/* Stats */}
               <motion.div
-                className="mt-16 grid grid-cols-4 gap-8 max-w-5xl mx-auto"
+                className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 max-w-5xl mx-auto px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -152,9 +201,9 @@ export default function About() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-green-400/10 to-teal-400/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                    <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-8 border border-neutral-200/50 group-hover:border-neutral-300/50 transition-all duration-300">
+                    <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-4 sm:p-8 border border-neutral-200/50 group-hover:border-neutral-300/50 transition-all duration-300">
                       <motion.div 
-                        className={`text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                        className={`text-2xl sm:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
                         animate={{
                           scale: [1, 1.1, 1],
                         }}
@@ -167,7 +216,7 @@ export default function About() {
                       >
                         {stat.value}
                       </motion.div>
-                      <div className="text-neutral-600 mt-2 font-medium">{stat.label}</div>
+                      <div className="text-neutral-600 mt-1 sm:mt-2 font-medium text-sm sm:text-base">{stat.label}</div>
                       <motion.div
                         className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.color} rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                         initial={{ scaleX: 0 }}

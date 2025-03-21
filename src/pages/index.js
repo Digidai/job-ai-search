@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
-import { DocumentTextIcon, ChatBubbleBottomCenterTextIcon, RocketLaunchIcon, SparklesIcon, CheckIcon, UserIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, ChatBubbleBottomCenterTextIcon, RocketLaunchIcon, SparklesIcon, CheckIcon, UserIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Footer from '../components/Footer';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-400/5 via-green-400/10 to-teal-400/15">
       {/* Navigation */}
@@ -12,19 +15,74 @@ export default function Home() {
             <div className="flex-shrink-0">
               <a href="/" className="text-2xl font-bold text-gradient">OpenJobs AI</a>
             </div>
+            {/* Desktop Navigation */}
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
-              <a href="/#how-it-works" className="nav-link">How It Works</a>
+              <a href="#how-it-works" className="nav-link">How It Works</a>
               <a href="/about" className="nav-link">About</a>
               <button className="btn-primary">
                 Get Started
               </button>
             </div>
+            {/* Mobile Menu Button */}
+            <div className="sm:hidden">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all duration-200"
+              >
+                <span className="sr-only">Open menu</span>
+                {isMobileMenuOpen ? (
+                  <XMarkIcon className="h-6 w-6" />
+                ) : (
+                  <Bars3Icon className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="sm:hidden absolute top-16 inset-x-0 z-50 bg-white border-b border-neutral-200">
+            <div className="pt-2 pb-4 px-4 space-y-1">
+              <a
+                href="#how-it-works"
+                className="block px-3 py-2 rounded-lg text-base font-medium text-neutral-900 hover:bg-neutral-100 hover:text-emerald-600 transition-all duration-200"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  const section = document.getElementById('how-it-works');
+                  const navHeight = 64;
+                  const offset = section.offsetTop - navHeight;
+                  window.scrollTo({
+                    top: offset,
+                    behavior: 'smooth'
+                  });
+                }}
+              >
+                How It Works
+              </a>
+              <a
+                href="/about"
+                className="block px-3 py-2 rounded-lg text-base font-medium text-neutral-900 hover:bg-neutral-100 hover:text-emerald-600 transition-all duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <div className="mt-4 px-3">
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg px-4 py-2 text-base font-medium hover:opacity-90 transition-all duration-200 flex items-center justify-center space-x-2"
+                >
+                  <span>Get Started</span>
+                  <RocketLaunchIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden min-h-[85vh] flex items-center">
+      <div className="relative overflow-hidden min-h-screen sm:min-h-[85vh] flex items-start sm:items-center pt-24 sm:pt-0">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-radial from-neutral-100 via-transparent to-transparent opacity-80"></div>
@@ -97,7 +155,7 @@ export default function Home() {
                       ease: "easeInOut"
                     }}
                   ></motion.div>
-                  <h1 className="relative text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl mb-6">
+                  <h1 className="relative text-3xl sm:text-4xl tracking-tight font-extrabold md:text-5xl lg:text-6xl mb-6">
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 pb-2">
                       AI Job Hunter
                     </span>
@@ -119,34 +177,34 @@ export default function Home() {
 
                 {/* Interactive CTA Buttons */}
                 <motion.div
-                  className="mt-8 flex justify-center space-x-4"
+                  className="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
                   <motion.button
-                    className="btn-primary px-8 py-3 text-lg flex items-center space-x-2 relative overflow-hidden group"
+                    className="btn-primary w-full sm:w-auto px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center space-x-2 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-green-400/20 to-teal-400/20 transform group-hover:translate-x-full transition-transform duration-500"></div>
                     <span>Get Started Free</span>
-                    <RocketLaunchIcon className="h-5 w-5 ml-2 group-hover:animate-bounce" />
+                    <RocketLaunchIcon className="h-5 w-5 group-hover:animate-bounce" />
                   </motion.button>
                   <motion.button
-                    className="btn-secondary px-8 py-3 text-lg flex items-center space-x-2 relative overflow-hidden group"
+                    className="btn-secondary w-full sm:w-auto px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center space-x-2 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-green-400/10 to-teal-400/10 transform group-hover:translate-x-full transition-transform duration-500"></div>
                     <span>Watch Demo</span>
-                    <SparklesIcon className="h-5 w-5 ml-2 group-hover:animate-spin" />
+                    <SparklesIcon className="h-5 w-5 group-hover:animate-spin" />
                   </motion.button>
                 </motion.div>
                 
                 {/* Animated Stats Cards */}
                 <motion.div
-                  className="mt-12 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
+                  className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto px-4 sm:px-0"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
@@ -163,21 +221,21 @@ export default function Home() {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-green-400/10 to-teal-400/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                      <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-neutral-200/50 transform transition-all duration-300 group-hover:translate-y-[-4px]">
-                        <div className="flex items-center justify-center mb-3">
-                          <stat.icon className="h-6 w-6 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
+                      <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-neutral-200/50 transform transition-all duration-300 group-hover:translate-y-[-4px]">
+                        <div className="flex items-center justify-center mb-2 sm:mb-3">
+                          <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
                         </div>
-                        <div className="text-2xl font-bold text-gradient">{stat.value}</div>
-                        <div className="text-neutral-600 mt-1 group-hover:text-neutral-700 transition-colors duration-300">{stat.label}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-gradient text-center">{stat.value}</div>
+                        <div className="text-sm sm:text-base text-neutral-600 mt-1 group-hover:text-neutral-700 transition-colors duration-300 text-center">{stat.label}</div>
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl"></div>
-                  </div>
+                      </div>
                     </motion.div>
                   ))}
                 </motion.div>
 
                 {/* Trust Indicators */}
                 <motion.div
-                  className="mt-12 flex justify-center items-center space-x-8"
+                  className="mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 px-4 sm:px-0"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
@@ -189,15 +247,15 @@ export default function Home() {
                   ].map((badge, index) => (
                     <motion.div
                       key={badge.text}
-                      className="flex items-center text-neutral-500 relative group cursor-pointer"
+                      className="flex items-center text-neutral-500 relative group cursor-pointer w-full sm:w-auto justify-center"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: badge.delay }}
                       whileHover={{ scale: 1.05 }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/5 via-green-400/5 to-teal-400/5 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <SparklesIcon className="h-5 w-5 mr-2 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
-                      <span className="relative z-10">{badge.text}</span>
+                      <SparklesIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
+                      <span className="relative z-10 text-sm sm:text-base">{badge.text}</span>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -206,7 +264,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Moved outside of main content */}
+        {/* Scroll Indicator */}
         <div className="absolute inset-x-0 bottom-12 z-20">
           <motion.div
             className="flex flex-col items-center cursor-pointer"
@@ -215,9 +273,12 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 1.2 }}
             whileHover={{ scale: 1.05 }}
             onClick={() => {
-              document.getElementById('how-it-works').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
+              const section = document.getElementById('how-it-works');
+              const navHeight = 64; // Height of the navigation bar
+              const offset = section.offsetTop - navHeight;
+              window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
               });
             }}
           >
@@ -279,7 +340,7 @@ export default function Home() {
       </div>
 
       {/* How It Works Section */}
-      <div id="how-it-works" className="section relative overflow-hidden py-24">
+      <section id="how-it-works" className="section relative overflow-hidden py-24 scroll-mt-24">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,0,0,0.02),transparent_70%)]"></div>
@@ -301,9 +362,9 @@ export default function Home() {
               ease: "linear"
             }}
           ></motion.div>
-          </div>
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div 
             className="lg:text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -311,9 +372,9 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-extrabold text-gradient relative inline-block">
+            <h2 className="text-4xl font-extrabold text-neutral-800 relative inline-block">
               <motion.div
-                className="absolute -inset-x-6 -inset-y-4 bg-gradient-to-r from-emerald-400/20 via-green-400/20 to-teal-400/20 rounded-full blur-xl"
+                className="absolute -inset-x-6 -inset-y-4 bg-gradient-to-r from-emerald-400/30 via-green-400/30 to-teal-400/30 rounded-full blur-xl"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.5, 0.8, 0.5],
@@ -324,7 +385,7 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
               ></motion.div>
-              <span className="relative">How It Works</span>
+              <span className="relative bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent">How It Works</span>
             </h2>
             <motion.div 
               className="mt-4 flex justify-center space-x-2"
@@ -337,9 +398,9 @@ export default function Home() {
                 ease: "easeInOut"
               }}
             >
-              <span className="w-3 h-3 rounded-full bg-emerald-400"></span>
-              <span className="w-3 h-3 rounded-full bg-green-400"></span>
-              <span className="w-3 h-3 rounded-full bg-teal-400"></span>
+              <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span className="w-3 h-3 rounded-full bg-green-500"></span>
+              <span className="w-3 h-3 rounded-full bg-teal-500"></span>
             </motion.div>
           </motion.div>
 
@@ -865,6 +926,8 @@ export default function Home() {
                         {/* Application Process Steps */}
                         <div className="relative">
                           <div className="absolute left-4 top-0 bottom-0 w-px bg-neutral-200"></div>
+                          
+                          {/* Process Steps */}
                           {[
                             { step: 'Resume Tailoring', status: 'done' },
                             { step: 'Cover Letter Generation', status: 'done' },
@@ -886,7 +949,6 @@ export default function Home() {
                                 transition={{
                                   duration: 2,
                                   repeat: Infinity,
-                                  delay: index * 0.3,
                                 }}
                               >
                                 <SparklesIcon
@@ -895,6 +957,7 @@ export default function Home() {
                                   }`}
                                 />
                               </motion.div>
+                              
                               <div className="ml-3 flex-1">
                                 <div className="text-sm font-medium text-neutral-800">{item.step}</div>
                                 <div className="text-xs text-neutral-500">
@@ -1321,7 +1384,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CTA Section */}
       <div className="bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
@@ -1378,7 +1441,7 @@ export default function Home() {
           ></motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -1386,7 +1449,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl relative inline-block">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white md:text-4xl relative inline-block">
               <motion.div
                 className="absolute -inset-x-6 -inset-y-4 bg-gradient-to-r from-emerald-400/10 via-green-400/10 to-teal-400/10 rounded-full blur-xl"
                 animate={{
@@ -1399,18 +1462,18 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
               ></motion.div>
-              <span className="block relative">Ready to find your dream job?</span>
-              <span className="block mt-2 text-neutral-300 text-2xl font-normal">Let AI do the hard work for you!</span>
+              <span className="relative">Ready to find your dream job?</span>
+              <span className="block mt-2 text-neutral-300 text-xl sm:text-2xl font-normal">Let AI do the hard work for you!</span>
           </h2>
             <motion.div 
-              className="mt-12"
+              className="mt-8 sm:mt-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <motion.button
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-lg text-neutral-900 bg-white hover:bg-neutral-50 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 text-base font-medium rounded-lg text-neutral-900 bg-white hover:bg-neutral-50 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -1436,7 +1499,7 @@ export default function Home() {
 
             {/* Trust Indicators */}
             <motion.div
-              className="mt-12 flex justify-center items-center space-x-8"
+              className="mt-8 sm:mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -1449,7 +1512,7 @@ export default function Home() {
               ].map((item, index) => (
                 <motion.div
                   key={item.text}
-                  className="flex items-center text-neutral-400 relative group cursor-pointer"
+                  className="flex items-center text-neutral-400 relative group cursor-pointer w-full sm:w-auto justify-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -1457,8 +1520,8 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/5 via-green-400/5 to-teal-400/5 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <item.icon className="h-5 w-5 mr-2 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300" />
-                  <span className="relative z-10 group-hover:text-neutral-300 transition-colors duration-300">{item.text}</span>
+                  <item.icon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300" />
+                  <span className="relative z-10 text-sm sm:text-base group-hover:text-neutral-300 transition-colors duration-300">{item.text}</span>
                 </motion.div>
               ))}
             </motion.div>
