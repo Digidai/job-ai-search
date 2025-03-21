@@ -143,7 +143,7 @@ export default function Home() {
                     <SparklesIcon className="h-5 w-5 ml-2 group-hover:animate-spin" />
                   </motion.button>
                 </motion.div>
-
+                
                 {/* Animated Stats Cards */}
                 <motion.div
                   className="mt-12 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
@@ -170,7 +170,7 @@ export default function Home() {
                         <div className="text-2xl font-bold text-gradient">{stat.value}</div>
                         <div className="text-neutral-600 mt-1 group-hover:text-neutral-700 transition-colors duration-300">{stat.label}</div>
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl"></div>
-                      </div>
+                  </div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -301,7 +301,7 @@ export default function Home() {
               ease: "linear"
             }}
           ></motion.div>
-        </div>
+          </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div 
@@ -364,7 +364,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="card group hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-6">
                   <motion.div 
                     className="icon-box relative z-10 group-hover:scale-110 transition-transform duration-300"
                     whileHover={{ rotate: 360 }}
@@ -374,8 +374,8 @@ export default function Home() {
                     <DocumentTextIcon className="h-8 w-8 text-neutral-700 relative z-10" />
                   </motion.div>
                   <h3 className="ml-4 text-2xl font-bold text-gradient">Step 01: OpenJobs AI Learns about You</h3>
-                </div>
-                <div className="grid md:grid-cols-2 gap-8">
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-8">
                   <motion.div 
                     className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -4 }}
@@ -611,7 +611,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="card group hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-6">
                   <motion.div 
                     className="icon-box relative z-10 group-hover:scale-110 transition-transform duration-300"
                     whileHover={{ rotate: 360 }}
@@ -621,8 +621,8 @@ export default function Home() {
                     <RocketLaunchIcon className="h-8 w-8 text-neutral-700 relative z-10" />
                   </motion.div>
                   <h3 className="ml-4 text-2xl font-bold text-gradient">Step 02: Your Personal Job Hunter</h3>
-                </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-8">
                   <motion.div 
                     className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -4 }}
@@ -951,7 +951,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="card group hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-6">
                   <motion.div 
                     className="icon-box relative z-10 group-hover:scale-110 transition-transform duration-300"
                     whileHover={{ rotate: 360 }}
@@ -961,8 +961,8 @@ export default function Home() {
                     <SparklesIcon className="h-8 w-8 text-neutral-700 relative z-10" />
                   </motion.div>
                   <h3 className="ml-4 text-2xl font-bold text-gradient">Step 03: Smart Matching</h3>
-                </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-8">
                   <motion.div 
                     className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -4 }}
@@ -1401,7 +1401,7 @@ export default function Home() {
               ></motion.div>
               <span className="block relative">Ready to find your dream job?</span>
               <span className="block mt-2 text-neutral-300 text-2xl font-normal">Let AI do the hard work for you!</span>
-            </h2>
+          </h2>
             <motion.div 
               className="mt-12"
               initial={{ opacity: 0, y: 20 }}
@@ -1416,7 +1416,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-green-400/20 to-teal-400/20 transform group-hover:translate-x-full transition-transform duration-500"></div>
                 <span className="relative z-10 flex items-center">
-                  Get Started Now
+                Get Started Now
                   <motion.div
                     className="ml-2"
                     animate={{
