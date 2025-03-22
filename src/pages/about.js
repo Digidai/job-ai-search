@@ -231,63 +231,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Repositioned */}
-        <div className="absolute inset-x-0 bottom-12 z-20">
-          <motion.div
-            className="flex flex-col items-center cursor-pointer"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={() => {
-              document.getElementById('mission').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }}
-          >
-            <motion.span 
-              className="text-neutral-500 text-sm mb-2 relative tracking-wide"
-              animate={{
-                y: [0, -2, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              Scroll to explore
-            </motion.span>
-            <div className="relative">
-              <motion.div
-                className="absolute inset-0 rounded-full bg-emerald-400/20 blur-md"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div
-                className="w-1 h-8 rounded-full bg-gradient-to-b from-emerald-500 to-transparent relative"
-                animate={{ 
-                  scaleY: [1, 0.5, 1],
-                  opacity: [0.7, 0.3, 0.7],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </div>
-          </motion.div>
-        </div>
-
         {/* Bottom Gradient */}
         <motion.div 
           className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent"
