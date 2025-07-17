@@ -19,9 +19,9 @@ export default function Home() {
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
               <a href="#how-it-works" className="nav-link">How It Works</a>
               <a href="/about" className="nav-link">About</a>
-              <button className="btn-primary">
+              <a href="https://openjobs-ai.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Get Started
-              </button>
+              </a>
             </div>
             {/* Mobile Menu Button */}
             <div className="sm:hidden">
@@ -36,8 +36,8 @@ export default function Home() {
                   <Bars3Icon className="h-6 w-6" />
                 )}
               </button>
-            </div>
           </div>
+        </div>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -68,13 +68,16 @@ export default function Home() {
                 About
               </a>
               <div className="mt-4 px-3">
-                <button
+                <a
+                  href="https://openjobs-ai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg px-4 py-2 text-base font-medium hover:opacity-90 transition-all duration-200 flex items-center justify-center space-x-2"
                 >
                   <span>Get Started</span>
                   <RocketLaunchIcon className="h-5 w-5" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -103,14 +106,14 @@ export default function Home() {
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated Circles */}
-          <motion.div
+                <motion.div
             className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-emerald-400/10 to-green-400/10 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.5, 0.8, 0.5],
               rotate: [0, 180, 360]
             }}
-            transition={{
+                  transition={{
               duration: 8,
               repeat: Infinity,
               ease: "linear"
@@ -182,7 +185,10 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  <motion.button
+                    <motion.a
+                    href="https://openjobs-ai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-primary w-full sm:w-auto px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center space-x-2 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -190,8 +196,8 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-green-400/20 to-teal-400/20 transform group-hover:translate-x-full transition-transform duration-500"></div>
                     <span>Get Started Free</span>
                     <RocketLaunchIcon className="h-5 w-5 group-hover:animate-bounce" />
-                  </motion.button>
-                  <motion.button
+                    </motion.a>
+                    <motion.button
                     className="btn-secondary w-full sm:w-auto px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center space-x-2 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -199,7 +205,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 via-green-400/10 to-teal-400/10 transform group-hover:translate-x-full transition-transform duration-500"></div>
                     <span>Watch Demo</span>
                     <SparklesIcon className="h-5 w-5 group-hover:animate-spin" />
-                  </motion.button>
+                    </motion.button>
                 </motion.div>
                 
                 {/* Animated Stats Cards */}
@@ -224,11 +230,11 @@ export default function Home() {
                       <div className="relative bg-white/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-neutral-200/50 transform transition-all duration-300 group-hover:translate-y-[-4px]">
                         <div className="flex items-center justify-center mb-2 sm:mb-3">
                           <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
-                        </div>
+                  </div>
                         <div className="text-xl sm:text-2xl font-bold text-gradient text-center">{stat.value}</div>
                         <div className="text-sm sm:text-base text-neutral-600 mt-1 group-hover:text-neutral-700 transition-colors duration-300 text-center">{stat.label}</div>
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl"></div>
-                      </div>
+                </div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -302,7 +308,7 @@ export default function Home() {
               ease: "linear"
             }}
           ></motion.div>
-        </div>
+          </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div 
@@ -387,7 +393,7 @@ export default function Home() {
                       <div className="flex items-center">
                         <DocumentTextIcon className="h-6 w-6 text-emerald-500 mr-2 group-hover:text-emerald-600 transition-colors duration-300" />
                         <h4 className="text-xl font-semibold text-neutral-800">Upload Resume</h4>
-                      </div>
+                    </div>
                       <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300">
                         OpenJobs AI scans your resume and learns about your experiences, skills, and achievements.
                       </p>
@@ -409,15 +415,15 @@ export default function Home() {
                           >
                             <div className="w-12 h-14 bg-neutral-100 rounded-lg flex items-center justify-center">
                               <DocumentTextIcon className="h-8 w-8 text-emerald-500" />
-                            </div>
+                    </div>
                             <div className="flex-1 space-y-2">
                               <div className="h-2 w-24 bg-emerald-400/30 rounded-full"></div>
                               <div className="space-y-1">
                                 <div className="h-1.5 w-full bg-neutral-200 rounded-full"></div>
                                 <div className="h-1.5 w-5/6 bg-neutral-200 rounded-full"></div>
                                 <div className="h-1.5 w-4/6 bg-neutral-200 rounded-full"></div>
-                              </div>
-                            </div>
+                  </div>
+                </div>
                           </motion.div>
 
                           {/* Scanning Effect */}
@@ -451,7 +457,7 @@ export default function Home() {
                                   }}
                                 ></motion.div>
                               ))}
-                            </div>
+              </div>
                             <motion.div
                               className="text-xs text-emerald-500"
                               animate={{
@@ -634,7 +640,7 @@ export default function Home() {
                       <div className="flex items-center">
                         <SparklesIcon className="h-6 w-6 text-emerald-500 mr-2 group-hover:text-emerald-600 transition-colors duration-300" />
                         <h4 className="text-xl font-semibold text-neutral-800">24/7 Job Search</h4>
-                      </div>
+                    </div>
                       <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300">
                         Your tireless AI assistant searches hundreds of job platforms every minute.
                       </p>
@@ -662,7 +668,7 @@ export default function Home() {
                                 {platform}
                               </motion.div>
                             ))}
-                          </div>
+                    </div>
 
                           {/* Search Radar Effect */}
                           <div className="relative h-24 mb-3">
@@ -741,8 +747,8 @@ export default function Home() {
                             >
                               Live Search Active
                             </motion.div>
-                          </div>
-                        </div>
+                    </div>
+                  </div>
                       </div>
                     </div>
                   </motion.div>
@@ -976,7 +982,7 @@ export default function Home() {
                       <div className="flex items-center">
                         <SparklesIcon className="h-6 w-6 text-emerald-500 mr-2 group-hover:text-emerald-600 transition-colors duration-300" />
                         <h4 className="text-xl font-semibold text-neutral-800">Perfect Match Score</h4>
-                      </div>
+                    </div>
                       <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300">
                         Each job gets a compatibility score from 1-10, just like a dating app!
                       </p>
@@ -1001,7 +1007,7 @@ export default function Home() {
                               <div>
                                 <div className="font-medium text-neutral-800">Senior AI Engineer</div>
                                 <div className="text-sm text-neutral-500">TechCorp Inc.</div>
-                              </div>
+                    </div>
                               <motion.div
                                 className="flex items-center"
                                 animate={{
@@ -1016,7 +1022,7 @@ export default function Home() {
                                 <span className="text-lg font-bold text-emerald-500">9.5</span>
                                 <span className="text-sm text-neutral-400 ml-1">/10</span>
                               </motion.div>
-                            </div>
+                    </div>
 
                             {/* Match Indicators */}
                             <div className="space-y-2">
@@ -1065,10 +1071,10 @@ export default function Home() {
                               ))}
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
                   <motion.div 
                     className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 relative overflow-hidden group"
@@ -1080,7 +1086,7 @@ export default function Home() {
                       <div className="flex items-center">
                         <SparklesIcon className="h-6 w-6 text-green-500 mr-2 group-hover:text-green-600 transition-colors duration-300" />
                         <h4 className="text-xl font-semibold text-neutral-800">Custom Cover Letters</h4>
-                      </div>
+          </div>
                       <p className="text-neutral-600 group-hover:text-neutral-700 transition-colors duration-300">
                         AI writes personalized cover letters that make you stand out.
                       </p>
@@ -1127,7 +1133,7 @@ export default function Home() {
                                     delay: 0.2,
                                   }}
                                 />
-                              </div>
+        </div>
                               
                               {[40, 35, 45, 30].map((width, index) => (
                                 <motion.div
@@ -1143,7 +1149,7 @@ export default function Home() {
                                   }}
                                 />
                               ))}
-                            </div>
+      </div>
 
                             {/* AI Writing Indicators */}
                             <div className="mt-3 flex items-center justify-between text-xs">
@@ -1466,7 +1472,7 @@ export default function Home() {
               ))}
             </motion.div>
           </motion.div>
-        </div>
+            </div>
 
         {/* Animated Border */}
         <motion.div
